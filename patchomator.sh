@@ -130,6 +130,7 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 InstallomatorPATH=("/usr/local/Installomator/Installomator.sh")
 configfile=("/Library/Application Support/Patchomator/patchomator.plist")
+managedConfigfile=("/Library/Managed Preferences/com.mac-nerd.patchomator.plist")
 #patchomatorPath=$(dirname $(realpath $0)) # default install at /usr/local/Installomator/
 
 # "realpath" doesn't exist on Monterey. 
@@ -745,7 +746,19 @@ fi
 
 notice "Verbose Mode enabled." # and if it's not? This won't echo.
 
-configfile=$configfile[-1] # either provided on the command line, or default path
+if ! [[ -f $configfile[-1] ]] && [[ -f $managedConfigfile ]]
+then
+	configfile=$managedConfigfile
+else
+	configfile=$configfile[-1] # either provided on the command line, or default path
+fi
+
+# prevent patchomator modify the content of the managed config
+if [[ $configfile == $managedConfigfile ]] && [[ ${#writeconfig} -eq 1 ]]
+then
+	fatal "You should not manualy overwrite ${YELLOW}$managedConfigfile${RESET}"
+fi
+
 InstallomatorPATH=$InstallomatorPATH[-1] # either provided on the command line, or default /usr/local/Installomator
 
 MDMName=$MDMName[-1] #[one of jamf, mosyleb, mosylem, addigy, microsoft, ws1, other ]
