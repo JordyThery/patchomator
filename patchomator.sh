@@ -16,7 +16,8 @@
 #	Jordy Thery
 #	Trevor Sysock
 #	Michael Zukrow
-
+#	Sjur Lohne
+#	Max Roy
 
 # To Fix: 
 # Only search for apps in /Applications by default, optionally --everywhere
