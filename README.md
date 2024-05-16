@@ -84,7 +84,7 @@ When written using the `--write` option, the file `patchomator.plist` contains a
 The current state of the configuration can be read with the following command 
 
 ```
-defaults read /Library/Preferences/Patchomator/patchomator.plist
+defaults read /Library/Application\ Support/Patchomator/patchomator.plist
 
 {
     "/Applications/1Password 7.app" = 1password7;
