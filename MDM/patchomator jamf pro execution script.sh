@@ -9,8 +9,8 @@
 
 # This could be adapted to replace triggers at the end of the script by more Jamf Pro script parameters to have more control. 
 
-InstallomatorPath=("/usr/local/Installomator/Installomator.sh")
-PatchomatorPath=("/usr/local/Installomator/patchomator.sh")
+InstallomatorPath="/usr/local/Installomator/Installomator.sh"
+PatchomatorPath="/usr/local/Installomator/patchomator.sh"
 #
 # Check if Installomator is found locally.
 #
